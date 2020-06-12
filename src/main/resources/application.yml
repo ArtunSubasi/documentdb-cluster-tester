@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://USER:PASSWORD@localhost:27017/test?tls=true&tlsAllowInvalidHostnames=true
+
+logging:
+  level:
+    org.springframework.data: DEBUG
+    com.mongodb: DEBUG
+    org.mongodb: DEBUG
