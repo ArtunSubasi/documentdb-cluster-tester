@@ -3,8 +3,9 @@
 This is a sample app which attempts to reproduce DocumentDB connection problems in Cloud Foundry (CF).
 
 # Preconditions
+* Java 11
 * CF CLI
-* You are logged in to a test organasation / space
+* You are logged in to a CF test organisation / space
 
 # Preperations
 
