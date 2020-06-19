@@ -1,0 +1,16 @@
+---
+applications:
+- name: test-app1
+  memory: 768MB
+  instances: 1
+  buildpacks:
+    - java_buildpack_cached
+  services: [ test-document-db ]
+  health-check-type: http
+  health-check-http-endpoint: /actuator/health
+  timeout: 180
+  env:
+    SPRING_PROFILES_ACTIVE: dev
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '[enabled: false]'
+    JAVA_OPTS: "-Dnewrelic.config.distributed_tracing.enabled=true -DXmx512m -DXms128m -Djdk.tls.disabledAlgorithms=SSLv2Hello,SSLv3,TLSv1,TLSv1.1"
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.0.+ }}'

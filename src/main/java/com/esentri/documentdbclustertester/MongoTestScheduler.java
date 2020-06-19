@@ -15,13 +15,13 @@ public class MongoTestScheduler {
 
   private static final Logger log = LoggerFactory.getLogger(MongoTestScheduler.class);
 
-  @Scheduled(fixedRate = 1)
+  @Scheduled(fixedRate = 1000)
   public void ping() {
     List<Stuff> foundStuff = stuffRepository.findAll();
     log.info("Found {} stuff!", foundStuff.size());
   }
 
-  @Scheduled(fixedDelay = 1000)
+  @Scheduled(fixedDelay = 5000)
   public void createStuff() {
     Stuff newStuff = stuffRepository.save(new Stuff());
     log.info("created new stuff: {}", newStuff.getId());

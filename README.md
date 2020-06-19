@@ -1,17 +1,21 @@
 # Intro
 
-This is a sample app which attempts to reproduce a connection problem as described in the MongoDB community forums:
-https://developer.mongodb.com/community/forums/t/documentdb-cluster-invalidating-the-connection-pool-kills-connections-of-other-microservices/5235
-The problem could not be reproduced.
+This is a sample app which attempts to reproduce DocumentDB connection problems in Cloud Foundry (CF).
 
 # Preconditions
+* CF CLI
+* You are logged in to a test organasation / space
 
-1) A DocumentDB is running in AWS
-2) A EC2 instance is running in AWS which has incoming SSH connection enabled (this EC2 acts as a Bastion host)
-3) The EC2 instance should be able access the DocumentDB
+# Preperations
 
-# Testing locally
+1) Create a document db service:
+`cf create-service aws_documentdb small test-document-db`
 
-1) Create an SSH tunnel to the EC2 instance
-2) Insert the DocumentDB username and password to the application.yml
-3) Start the app via DocumentdbClusterTesterApplication
+2) Build and deploy the first app:
+`./deploy-1.sh`
+
+3) Build and deploy the second app:
+`./deploy-1.sh`
+
+4) Unbind the document db service from the second app:
+`cf unbind-service test-app2 test-document-db`
